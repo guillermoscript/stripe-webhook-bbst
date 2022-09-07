@@ -1,0 +1,20 @@
+{
+  "name": "webhook-bbeast",
+  "version": "1.0.0",
+  "description": "a server to send data from stripe to any other source needed",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon --watch server.js --exec node server.js",
+    "start": "node server.js"
+  },
+  "author": "Guillermo Marin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "stripe": "^10.7.0"
+  }
+}
