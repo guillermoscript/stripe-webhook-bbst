@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  webhook:
+    image: node:18-alpine3.15
+    container_name: webhook-stripe
+    restart: unless-stopped
+    ports:
+      - 443:4242
+    build: .
+    environment:
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+
+  nginx:
+    image: nginx
+
+  stripe-cli:
+    image: stripe/stripe-cli
+    container_name: stripe-cli
+    command: "listen --api-key ${STRIPE_API_KEY} --device-name ${STRIPE_DEVICE_NAME} --forward-to webhook:4242/webhook"
+    environment:
+      - STRIPE_API_KEY=${STRIPE_API_KEY} 
