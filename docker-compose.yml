@@ -6,13 +6,13 @@ services:
     container_name: webhook-stripe
     restart: unless-stopped
     ports:
-      - 443:4242
+      - 4242:4242
     build: .
     environment:
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
 
-  nginx:
-    image: nginx
+  # nginx:
+  #   image: nginx
 
   stripe-cli:
     image: stripe/stripe-cli
